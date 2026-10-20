@@ -31,22 +31,93 @@ We will utilize **PyTorch** as our primary framework.
 
 
 
-## Installation and Setup
+# Project Setup Guide: Vision-Language-Action (VLA) Model
 
-Everyone must run the same stack. Follow these steps exactly, then run the
-environment check at the end and post the output in the group chat.
+This guide outlines the exact steps to set up a unified development environment for our group project. Everyone must use the same stack (WSL2 + Ubuntu 3.13 + NVIDIA CUDA) to ensure reproducibility.
 
-### Prerequisites
+## Python Installation
 
-| Requirement | Notes |
-|---|---|
-| WSL2 with Ubuntu | `wsl --install -d Ubuntu` from PowerShell if missing |
-| Python 3.13 | `python3.13 --version` |
-| NVIDIA GPU + Windows driver | WSL uses the **Windows** driver - do not install a Linux driver inside WSL |
-| Git | `git --version` |
-
-Install the Python dev headers once (needed to build some wheels):
+The project targets **Python 3.13**.
 
 ```bash
+# Refresh the package index
 sudo apt update
-sudo apt install -y python3.13 python3.13-venv python3.13-dev git
+
+# Install Python 3.13, venv support, dev headers, and build tools
+sudo apt install -y python3.13 python3.13-venv python3.13-dev build-essential git
+
+# Confirm the version
+python3.13 --version
+```
+
+## Virtual Environment Setup
+
+An isolated environment keeps project dependencies separate from system Python and guarantees everyone resolves the same versions.
+
+### Create the virtual environment
+
+```bash
+python3.13 -m venv venv
+```
+
+### Activate it
+
+```bash
+source venv/bin/activate
+```
+
+Your prompt should now show the `(venv)` prefix seeen below:
+
+```
+(venv) user@machine:~/vla-project$
+```
+
+> **Every new terminal session** requires re-activation:
+> ```bash
+> source venv/bin/activate
+> ```
+> To leave the environment: `deactivate`
+
+---
+
+##  Install Project Dependencies
+
+### Install requirements
+
+Do this once you have created the environment, so that everything here is the same as everyone elses! This is the whole point.
+```bash
+pip install -r requirements.txt
+```
+
+Make sure pip is upgraded and everything, as environment will be very bare bones.
+```bash
+pip install --upgrade pip
+```
+
+### Install PyTorch with the right CUDA build
+
+If `requirements.txt` does not pin a CUDA-specific PyTorch build, install it explicitly. Pick the command matching your driver from the official selector at **pytorch.org/get-started/locally**, then re-run the requirements install so nothing is downgraded:
+
+```bash
+# Example shape only — use the exact command from the PyTorch selector
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+
+# Then reconcile with the rest of the pinned deps
+pip install -r requirements.txt
+```
+
+Confirm the GPU is visible to PyTorch:
+
+```bash
+python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+```
+
+---
+
+## Environment Verification
+
+Run the bundled sanity check. It validates the interpreter version, confirms the virtual environment is active, imports every critical package, and probes CUDA.
+
+```bash
+python check_environment.py
+```
