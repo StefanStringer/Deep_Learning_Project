@@ -29,8 +29,6 @@ REQUIRED_PACKAGES = {
     "pandas":      ("2.1.0",  None),
     "scipy":       ("1.12.0", None),
     "matplotlib":  ("3.9.0",  None),
-    "wandb":       ("0.16.0", None),
-    "tensorboard": ("2.15.0", None),
     "tqdm":        ("4.66.0", None),
 }
 

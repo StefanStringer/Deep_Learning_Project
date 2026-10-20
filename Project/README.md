@@ -30,16 +30,23 @@ Details regarding the data source and preprocessing will be documented here.
 We will utilize **PyTorch** as our primary framework.
 
 
+
 ## Installation and Setup
 
+Everyone must run the same stack. Follow these steps exactly, then run the
+environment check at the end and post the output in the group chat.
+
 ### Prerequisites
-- Python 3.9+
-- Git
-- CUDA-capable GPU (recommended for training)
 
-### Step-by-Step Setup
+| Requirement | Notes |
+|---|---|
+| WSL2 with Ubuntu | `wsl --install -d Ubuntu` from PowerShell if missing |
+| Python 3.13 | `python3.13 --version` |
+| NVIDIA GPU + Windows driver | WSL uses the **Windows** driver - do not install a Linux driver inside WSL |
+| Git | `git --version` |
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/StefanStringer/Deep_Learning_Project.git
-   cd Deep_Learning_Project
+Install the Python dev headers once (needed to build some wheels):
+
+```bash
+sudo apt update
+sudo apt install -y python3.13 python3.13-venv python3.13-dev git

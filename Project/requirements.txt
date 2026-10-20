@@ -15,9 +15,5 @@ scipy>=1.12.0                      # Scientific computing utilities
 # --- Plotting & Visualisation ---
 matplotlib>=3.9.0                  # Loss curves, action trajectories, smoothness plots
 
-# --- Experiment Tracking & Logging ---
-wandb>=0.16.0                      # Weights & Biases - track loss, metrics, videos
-tensorboard>=2.15.0                # Alternative/backup logging
-
 # --- Utilities & Progress Bars ---
 tqdm>=4.66.0                       # Progress bars during training loops
