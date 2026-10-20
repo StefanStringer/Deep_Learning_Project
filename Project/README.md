@@ -9,7 +9,7 @@ Please add your name and details here when joining the repo.
 | Name | Discord Handle | 
 | :--- | :--- | 
 | Stefan Stringer | ChickenSandwhichKing |
-| [Name] | [Discord] |
+| Mikkel Møllebro | Makrel |
 
 ## Project Overview
 We are developing a Vision-Language-Action (VLA) model capable of translating visual inputs (images/video frames) and natural language instructions into actionable control signals for simulated environments (e.g., robotic arm manipulation or autonomous vehicle navigation).
