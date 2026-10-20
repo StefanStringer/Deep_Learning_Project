@@ -33,45 +33,113 @@ We will utilize **PyTorch** as our primary framework.
 
 # Project Setup Guide: Vision-Language-Action (VLA) Model
 
-This guide outlines the exact steps to set up a unified development environment for our group project. Everyone must use the same stack (WSL2 + Ubuntu 3.13 + NVIDIA CUDA) to ensure reproducibility.
+This guide outlines the exact steps to set up a unified development environment for our group project. Everyone must use the same stack (WSL2 + Ubuntu + Python 3.13 + NVIDIA CUDA) to ensure reproducibility.
 
-## Python Installation
+We use **uv** to manage the Python interpreter and all dependencies from a single
+configuration file, `pyproject.toml`.
 
-The project targets **Python 3.13**.
+---
+
+## Install uv
+
+Run this once per machine:
 
 ```bash
-# Update and refresh the package index 
-sudo apt update
-sudo apt install -y software-properties-common
-
-# Add python repository
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-
-# Install Python 3.13, venv support, dev headers, and build tools
-sudo apt install -y python3.13 python3.13-venv python3.13-dev build-essential git
-
-# Confirm the version
-python3.13 --version
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source ~/.bashrc        # or: exec $SHELL
+uv --version
 ```
 
-## Virtual Environment Setup
+If `uv --version` prints a version number, you are done with this step.
 
-An isolated environment keeps project dependencies separate from system Python and guarantees everyone resolves the same versions.
+---
 
-### Create the virtual environment
+## Understand the project configuration
+
+Everything about our environment lives in **`pyproject.toml`** at the repository
+root. If anything else is added, it should be added into the toml file as this is
+the main point for our environment and what packages/versions are used
+
+
+## Sync the environment
+
+From the repository root:
+
+```bash
+uv sync
+```
+
+What happens:
+
+1. uv reads `requires-python` and `.python-version`.
+2. It downloads a managed Python 3.13 build if you do not already have one.
+3. It creates a virtual environment at `.venv/`.
+4. It resolves all dependencies and writes `uv.lock`.
+5. It installs the resolved set into `.venv/`.
+
+The first run takes a few minutes because PyTorch is large. Later runs are
+near-instant thanks to uv's cache.
+
+---
+
+## Environment Verification
+
+Run the bundled sanity check. It validates the interpreter version, confirms the
+virtual environment is active, imports every critical package, and probes CUDA.
+
+```bash
+uv run python environment_checker.py
+```
+
+Expected output starts with `Python 3.13.x` and ends with a passing report.
+
+**Copy the entire output and post it in the group chat.** This lets us confirm
+everyone haws the same environment!
+
+---
+
+## Running code
+
+Every time you start a work session:
+
+```bash
+cd ~/vla-project
+git pull origin main
+uv sync                          # picks up any new dependencies
+
+```
+
+`uv run` executes the command inside `.venv` without activating anything. It also
+re-syncs automatically if `pyproject.toml` changed.
+
+## Optional: pinning a specific PyTorch CUDA build
+
+The default Linux wheels on PyPI are already CUDA-enabled, so most people can
+skip this. Only do it if `torch.cuda.is_available()` returns `False` after
+confirming your GPU is visible via `nvidia-smi`.
+
+```bash
+uv sync
+uv run python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+```
+
+Confirm the GPU is visible to PyTorch — you want a version number followed by
+`True`.
+
+---
+
+## Fallback: plain pip (only if you cannot use uv)
+
+If you are blocked from installing uv, the older manual route still works.
+
+### Create and activate a virtual environment
 
 ```bash
 python3.13 -m venv venv
-```
-
-### Activate it
-
-```bash
 source venv/bin/activate
 ```
 
-Your prompt should now show the `(venv)` prefix seeen below:
+Your prompt should now show the `(venv)` prefix:
 
 ```
 (venv) user@machine:~/vla-project$
@@ -83,46 +151,38 @@ Your prompt should now show the `(venv)` prefix seeen below:
 > ```
 > To leave the environment: `deactivate`
 
----
+### Install dependencies
 
-##  Install Project Dependencies
+Upgrade pip first, since a fresh environment is bare bones:
 
-### Install requirements
-
-Do this once you have created the environment, so that everything here is the same as everyone elses! This is the whole point.
-```bash
-pip install -r requirements.txt
-```
-
-Make sure pip is upgraded and everything, as environment will be very bare bones.
 ```bash
 pip install --upgrade pip
-```
-
-### Install PyTorch with the right CUDA build
-
-If `requirements.txt` does not pin a CUDA-specific PyTorch build, install it explicitly. Pick the command matching your driver from the official selector at **pytorch.org/get-started/locally**, then re-run the requirements install so nothing is downgraded:
-
-```bash
-# Example shape only — use the exact command from the PyTorch selector
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
-
-# Then reconcile with the rest of the pinned deps
 pip install -r requirements.txt
 ```
 
-Confirm the GPU is visible to PyTorch:
+### Clean reset
+
+If the environment becomes corrupted:
 
 ```bash
-python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+rm -rf .venv
+uv sync
 ```
+
+Your code and committed work are untouched — only the environment is rebuilt.
 
 ---
 
-## Environment Verification
+## File reference
 
-Run the bundled sanity check. It validates the interpreter version, confirms the virtual environment is active, imports every critical package, and probes CUDA.
+| File | Purpose |
+|---|---|---|
+| `pyproject.toml` | Python version + direct dependencies |
+| `uv.lock` | Exact resolved versions for reproducibility |
+| `.python-version` | Pins the interpreter version |
+| `requirements.txt` | Human-readable intent, kept for reference |
+| `requirements.lock.txt` | Auto-generated pip export |
+| `.venv/` | The virtual environment itself |
 
-```bash
-python check_environment.py
-```
+**Commit:** `pyproject.toml`, `uv.lock`, `.python-version`
+**Ignore:** `.venv/`, `requirements.lock.txt`, `__pycache__/`, `data/`, `checkpoints/`
