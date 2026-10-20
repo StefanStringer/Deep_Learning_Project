@@ -40,7 +40,12 @@ This guide outlines the exact steps to set up a unified development environment 
 The project targets **Python 3.13**.
 
 ```bash
-# Refresh the package index
+# Update and refresh the package index 
+sudo apt update
+sudo apt install -y software-properties-common
+
+# Add python repository
+sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
 
 # Install Python 3.13, venv support, dev headers, and build tools
