@@ -1,0 +1,58 @@
+# ---------------------------------------------------------------- Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ------------------------------------------------------- Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# -------------------------------------------------------------- Data & models
+# Keep the folders, ignore the contents. we dont want large files in out github
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+models/*
+!models/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+
+# ----------------------------------------------------- Experiment artefacts
+results/*
+!results/.gitkeep
+logs/
+outputs/                 # hydra-style run directories
+lightning_logs/
+wandb/
+*.log
+events.out.tfevents.*
+
+# --------------------------------------------------------------- Notebooks
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# ------------------------------------------------------------ Secrets & env
+.env
+.env.*
+!.env.example
+
+# ----------------------------------------------------------------- IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
