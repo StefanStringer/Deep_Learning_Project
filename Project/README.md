@@ -10,12 +10,14 @@ Please add your name and details here when joining the repo.
 | :--- | :--- | 
 | Stefan Stringer | ChickenSandwhichKing |
 | Mikkel Møllebro | Makrel |
+| Alf Beedholm | Alf |
 
 ## Project Overview
 We are developing a Vision-Language-Action (VLA) model capable of translating visual inputs (images/video frames) and natural language instructions into actionable control signals for simulated environments (e.g., robotic arm manipulation or autonomous vehicle navigation).
 
 The model will be trained using:
 1.  **Supervised Learning:** On a dataset of ....... (Insert when known)
+2.  **Reinforcement learning**
 
 ## Problem Statement
 Current robotic systems often struggle with generalisation to new tasks or environments. By combining computer vision (to perceive the world) and NLP (to understand high-level goals), we aim to create a policy that can execute complex, multi-step tasks based on simple textual commands.
