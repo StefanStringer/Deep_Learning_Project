@@ -188,3 +188,27 @@ Your code and committed work are untouched — only the environment is rebuilt.
 
 **Commit:** `pyproject.toml`, `uv.lock`, `.python-version`
 **Ignore:** `.venv/`, `requirements.lock.txt`, `__pycache__/`, `data/`, `checkpoints/`
+
+## Project roadmap
+This project will attempt to create a Vision-language-action (VLA) model by first establishing a baseline using an established dataset and later extending the model to a (novel task here) and later fine-tuning. 
+
+### Phase 0: Establishing baseline
+We will establish a baseline for our project by implementing the smolVLA model and achieving better-than-chance-level results for the model outputs when trained on the Maniskill3 Franka `PickCube-v1` dataset. 
+
+### Phase 1: 
+Achieving comparable results to similar projects by testing different loss functions and optimisers on the model. This phase will be implemented for all other future phases henceforth. 
+
+### Phase 2: 
+Creating a small dataset based on (insert novel task here and details about the task).
+
+### Phase 3: 
+Fine-tune the model using the `lerobot/smolVLA` fine-tuning pipeline evaluated on a reduction of loss.
+
+### Phase 4: 
+Create voice-to-text input for the model.
+
+### Phase 5: 
+Initializing the model on a physical robot to evaluate difference between simulated and real-life performance.  
+
+### Phase 6: 
+Have the model do reinforcement learning through a physical robot manipulator and achieve better performance than without.
