@@ -193,7 +193,7 @@ Your code and committed work are untouched — only the environment is rebuilt.
 This project will attempt to create a Vision-language-action (VLA) model by first establishing a baseline using an established dataset and later extending the model to a cooking task and later fine-tuning. 
 
 ### Phase 0: Establishing baseline
-We will establish a baseline for our project by implementing the smolVLA model and achieving better-than-chance-level results for the model outputs when trained on the Maniskill3 Franka `PickCube-v1` dataset. 
+We will establish a baseline for our project by implementing the smolVLA model and training on the Maniskill3 Franka `PickCube-v1` dataset until it reaches better results than without any training. 
 
 ### Phase 1: 
 Achieving comparable results to similar projects by testing different loss functions and optimisers on the model. This phase will be implemented for all other future phases henceforth. 
