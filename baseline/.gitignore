@@ -1,0 +1,22 @@
+# Byte-compiled / Python data
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Checkpoints and large binaries
+checkpoints/
+*.safetensors
+*.bin
+*.pth
+*.pt
+*.h5
+
+# Datasets
+data/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+maniskill_verification_frame.png
