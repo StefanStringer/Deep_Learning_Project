@@ -6,10 +6,10 @@ import numpy as np
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
 SRC = Path(
-    "/home/dl01e26/DATA/vla-dl01/data/pick_cube_demos/trajectory_dataset.h5"
+    "./data/pick_cube_demos/trajectory_dataset.h5"
 )
 ROOT = Path(
-    "/home/dl01e26/DATA/vla-dl01/data/lerobot_pick_cube"
+    "./data/lerobot_pick_cube"
 )
 REPO_ID = "local/pick_cube_rebalanced"
 
