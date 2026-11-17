@@ -33,7 +33,10 @@ pip install gymnasium h5py trimesh transforms3d pandas sapien dacite GitPython t
 
 ## 🚀 Usage
 
-### Environment Debug
+### Environment Activate on ECE Cluster and Debug
+On ECE cluster, our environment is at /home/dl01e26/.conda/envs/vla
+Run conda activate vla on a non-master node to activate it.
+
 If it shows "ImportError: pytorch_kinematics_ms not installed. Install with pip install pytorch_kinematics_ms", run:
 ```
 python -m pip install --force-reinstall --no-deps --no-cache-dir pytorch-kinematics-ms==0.7.3
