@@ -42,5 +42,5 @@ class SmolVLAEvaluator:
         return successes/len(seed_list)
 
 if __name__ == "__main__":
-    evaluator = SmolVLAEvaluator("/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube")
+    evaluator = SmolVLAEvaluator("checkpoints/smolvla_pickcube")
     print("Evaluator initialized.")

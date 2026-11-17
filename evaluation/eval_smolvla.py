@@ -15,7 +15,7 @@ VERIFIED_IN_DIST_UNSEEN = [1062, 1063, 1064, 1065, 1066]
 VERIFIED_GEN_SEEDS = [1002, 1003, 1004, 1007, 1008, 1010, 1011, 1019, 1021, 1022]
 FRESH_HELD_OUT_SEEDS = [5001, 5002, 5003, 5004, 5005, 5006, 5007, 5008, 5009, 5010]
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
 TASK_INSTRUCTION = "Pick up the red cube and place it at the goal location."
 MAX_STEPS_PER_EPISODE = 100
 

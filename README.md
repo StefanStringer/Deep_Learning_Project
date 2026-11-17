@@ -33,6 +33,15 @@ pip install gymnasium h5py trimesh transforms3d pandas sapien dacite GitPython t
 
 ## 🚀 Usage
 
+### Environment Activate on ECE Cluster and Debug
+On ECE cluster, our environment is at /home/dl01e26/.conda/envs/vla
+Run conda activate vla on a non-master node to activate it.
+
+If it shows "ImportError: pytorch_kinematics_ms not installed. Install with pip install pytorch_kinematics_ms", run:
+```
+python -m pip install --force-reinstall --no-deps --no-cache-dir pytorch-kinematics-ms==0.7.3
+```
+
 ### 1. Prepare Data
 ```bash
 cd Deep_Learning_Project
@@ -41,6 +50,8 @@ python -m data_collection.dataset_convert
 ```
 
 ### 2. Fine-Tuning SmolVLA Policy
+You can run run_train.sh simply, or:
+
 ```bash
 lerobot-train \
   --policy.path=lerobot/smolvla_base \
@@ -58,6 +69,7 @@ lerobot-train \
 ```
 
 ### 3. Single Episode Diagnostic Rollout
+You can run run_eval_seed1000.sh simply, or:
 ```bash
 python evaluation/eval_seed1000_full_trace.py
 ```
