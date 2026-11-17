@@ -4,15 +4,16 @@ import numpy as np
 import gymnasium as gym
 import mani_skill.envs
 
-from lerobot.policies import make_policy, make_pre_post_processors
+from lerobot.policies.factory import make_policy, make_pre_post_processors
 from lerobot.policies.smolvla.configuration_smolvla import SmolVLAConfig
 from lerobot.datasets.lerobot_dataset import LeRobotDatasetMetadata
+from lerobot.configs.policies import PreTrainedConfig
 from transformers import AutoTokenizer
 
 os.environ["SAPIEN_RENDER_ENGINE"] = "EGL"
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
-DATASET_ROOT = "/content/drive/MyDrive/vla-manipulation/data/lerobot_pick_cube"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep_8k/checkpoints/last/pretrained_model"
+DATASET_ROOT = "data/lerobot_pick_cube"
 TASK_INSTRUCTION = "Pick up the red cube and place it at the goal location."
 
 print("=========================================================")
@@ -24,7 +25,7 @@ device = torch.device(device_str)
 
 ds_meta = LeRobotDatasetMetadata(repo_id="local/pick_cube_rebalanced", root=DATASET_ROOT)
 
-cfg = SmolVLAConfig.from_pretrained(CHECKPOINT_PATH)
+cfg = PreTrainedConfig.from_pretrained(CHECKPOINT_PATH)
 cfg.pretrained_path = CHECKPOINT_PATH
 cfg.device = device_str
 

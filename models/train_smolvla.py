@@ -14,8 +14,8 @@ class SmolVLAFineTuner:
     def __init__(
         self,
         dataset_repo_id="local/pick_cube_demos",
-        dataset_root="/content/drive/MyDrive/vla-manipulation/data/pick_cube_demos",
-        output_dir="/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube",
+        dataset_root="data/pick_cube_demos",
+        output_dir="checkpoints/smolvla_pickcube",
         batch_size=8,
         num_epochs=10,
         learning_rate=1e-4,

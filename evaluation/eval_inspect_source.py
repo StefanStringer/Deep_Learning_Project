@@ -4,7 +4,7 @@ import json
 import torch
 from lerobot.policies.smolvla.modeling_smolvla import SmolVLAPolicy
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
 
 print("=========================================================")
 print("=== 1. CHECKPOINT DIRECTORY FILE LISTING ===")

@@ -4,8 +4,8 @@ import torch
 from lerobot.policies.factory import make_policy
 from lerobot.policies.common.pipeline import make_default_pre_post_processors
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
-DATASET_ROOT = "/content/drive/MyDrive/vla-manipulation/data/lerobot_pick_cube"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
+DATASET_ROOT = "data/lerobot_pick_cube"
 
 print("=========================================================")
 print("=== INSPECTING MAKE_DEFAULT_PRE_POST_PROCESSORS SOURCE ===")

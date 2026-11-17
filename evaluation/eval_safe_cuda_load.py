@@ -14,8 +14,8 @@ os.environ["SAPIEN_RENDER_ENGINE"] = "EGL"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 os.environ["TORCH_USE_CUDA_DSA"] = "1"
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
-DATASET_ROOT = "/content/drive/MyDrive/vla-manipulation/data/lerobot_pick_cube"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
+DATASET_ROOT = "data/lerobot_pick_cube"
 TASK_INSTRUCTION = "Pick up the red cube and place it at the goal location."
 
 print("=========================================================")

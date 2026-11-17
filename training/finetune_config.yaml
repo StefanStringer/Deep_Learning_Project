@@ -3,7 +3,7 @@
 # Dataset: 60 Episodes (~2,988 frames) with 7-dim TCP state + 128x128 RGB camera
 
 dataset:
-  root: "/content/drive/MyDrive/vla-manipulation/data/lerobot_pick_cube"
+  root: "data/lerobot_pick_cube"
   repo_id: "local/pick_cube_rebalanced"
 
 policy:

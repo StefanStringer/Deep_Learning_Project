@@ -33,6 +33,12 @@ pip install gymnasium h5py trimesh transforms3d pandas sapien dacite GitPython t
 
 ## 🚀 Usage
 
+### Environment Debug
+If it shows "ImportError: pytorch_kinematics_ms not installed. Install with pip install pytorch_kinematics_ms", run:
+```
+python -m pip install --force-reinstall --no-deps --no-cache-dir pytorch-kinematics-ms==0.7.3
+```
+
 ### 1. Prepare Data
 ```bash
 cd Deep_Learning_Project

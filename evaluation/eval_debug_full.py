@@ -9,7 +9,7 @@ from transformers import AutoTokenizer
 
 os.environ["SAPIEN_RENDER_ENGINE"] = "EGL"
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
 TASK_INSTRUCTION = "Pick up the red cube and place it at the goal location."
 
 print("=========================================================")

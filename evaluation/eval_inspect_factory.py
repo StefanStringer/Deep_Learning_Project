@@ -6,7 +6,7 @@ import torch
 from lerobot.policies.factory import make_policy
 from lerobot.processor import PolicyProcessor
 
-CHECKPOINT_PATH = "/content/drive/MyDrive/vla-manipulation/checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
+CHECKPOINT_PATH = "checkpoints/smolvla_pickcube_60ep/checkpoints/last/pretrained_model"
 
 print("=========================================================")
 print("=== 1. CHECKING MAKE_POLICY & POLICYPROCESSOR LOADING ===")
