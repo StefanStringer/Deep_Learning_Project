@@ -47,6 +47,8 @@ python -m data_collection.dataset_convert
 ```
 
 ### 2. Fine-Tuning SmolVLA Policy
+You can run run_train.sh simply, or:
+
 ```bash
 lerobot-train \
   --policy.path=lerobot/smolvla_base \
@@ -64,6 +66,7 @@ lerobot-train \
 ```
 
 ### 3. Single Episode Diagnostic Rollout
+You can run run_eval_seed1000.sh simply, or:
 ```bash
 python evaluation/eval_seed1000_full_trace.py
 ```
